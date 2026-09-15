@@ -28,7 +28,7 @@ const sectionSchema = {
 export default config({
   ui: { brand: { name: "Los Siete Chukis" } },
   storage,
-  cloud: { project: "TU-TEAM/TU-PROYECTO" },
+  cloud: { project: "siete-chukis-team/siete-chukis" },
   singletons: {
     site: singleton({
       label: "Ajustes del sitio",
