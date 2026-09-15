@@ -301,6 +301,9 @@
         color: var(--gold);
         text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
         text-transform: capitalize;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        max-width: calc(100% - 4rem);
       }
 
       .product-card-price {
