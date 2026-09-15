@@ -1,0 +1,39 @@
+hero:
+  logoImage: /hero/logoImage.jpg
+  brandName: Los Siete Chukis
+  brandSubtitle: Heladería Artesanal
+  tagline: "¡Dulzura y Sabor!"
+  scrollHint: Descubrí nuestros sabores
+shipping:
+  title: Envíos
+  subtitle: Llevamos tu helado
+  rows:
+    - { label: Envío estándar, price: "$1.000" }
+    - { label: Envío día de lluvia, price: "$1.100" }
+  note: "* Consultá zonas de cobertura por WhatsApp"
+location:
+  address: Primero de Mayo 798
+  city: Loma Hermosa
+  hours:
+    - { day: Mar a Dom, value: "17:00 - 23:00" }
+    - { day: Lunes, value: cerrado }
+  title: Encontranos
+  subtitle: Dónde estamos
+  shippingLabel: "Zona de envío:"
+  shippingZone: Loma Hermosa y alrededores
+  mapsButton: Cómo llegar
+  mapsUrl: "https://maps.google.com/?q=Primero+de+Mayo+798+Loma+Hermosa"
+cta:
+  title: "¿Te antojaste?"
+  subtitle: Hacé tu pedido por WhatsApp o seguinos en Instagram para ver nuestros sabores del día.
+  whatsappButton: Pedir por WhatsApp
+  instagramButton: Seguinos en Instagram
+  phones:
+    - "5491161367871"
+    - "5491127304412"
+  instagram: "https://www.instagram.com/los_sietechukis/"
+products:
+  fallbackImage: null
+seo:
+  metaTitle: "Los Siete Chukis — Heladería de Terror"
+  metaDescription: Heladería artesanal con temática de terror. Helados artesanales, milkshakes, tortas, toppings y bebidas. Precios por cantidad y envíos a domicilio.

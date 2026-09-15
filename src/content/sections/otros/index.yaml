@@ -1,0 +1,9 @@
+title: Otros
+order: 4
+visible: true
+products:
+  - { name: Gaseosa 500ml, category: bebidas, price: "1500" }
+  - { name: Jugo Natural, category: bebidas, price: "1800" }
+  - { name: Agua Mineral, category: bebidas, price: "1000" }
+  - { name: Licuado, category: bebidas, badge: Fresh, price: "2500" }
+  - { name: Bolsa de Hielo 2.5kg, category: hielos, price: "3000" }

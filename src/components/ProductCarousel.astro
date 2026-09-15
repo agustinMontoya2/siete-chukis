@@ -1,0 +1,34 @@
+---
+import type { SectionData } from '../types';
+import CategoryFilter from './CategoryFilter.astro';
+import ProductCard from './ProductCard.astro';
+
+interface Props {
+  section: SectionData;
+  fallback?: string;
+}
+
+const { section, fallback } = Astro.props;
+const hasFilters = (section.filters || []).length > 0;
+const wrapperId = `${section.slug}-wrapper`;
+const filterId = hasFilters ? `${section.slug}-filter` : undefined;
+---
+
+<section class="product-section" id={section.slug}>
+  <h2 class="section-title reveal">{section.title}</h2>
+  <div class="section-divider reveal"></div>
+  {hasFilters && (
+    <CategoryFilter filterId={filterId!} filters={section.filters} />
+  )}
+  <div class={`swiper ${section.slug}-swiper`}>
+    <div class="swiper-wrapper" id={wrapperId}>
+      {(section.products || []).map((product) => (
+        <div class="swiper-slide" data-cat={product.category}>
+          <ProductCard product={product} fallback={fallback} />
+        </div>
+      ))}
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</section>

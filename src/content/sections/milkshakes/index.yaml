@@ -1,0 +1,9 @@
+﻿title: Milkshakes
+order: 2
+visible: true
+products:
+  - name: Chocolate
+  - name: Vainilla
+  - name: Frutilla
+  - name: Oreo
+  - name: Dulce de Leche

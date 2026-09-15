@@ -1,0 +1,144 @@
+title: Helados
+order: 1
+visible: true
+products:
+  - name: Crema Oreo
+    category: cremas
+    imageUrl: /products/0/imageUrl.webp
+  - name: Cereza a la crema
+    category: frutales
+    imageUrl: /products/1/imageUrl.webp
+  - name: Banana Dolca
+    category: frutales
+    imageUrl: /products/2/imageUrl.webp
+  - name: Sambayon Granizado
+    category: cremas
+    imageUrl: /products/3/imageUrl.webp
+  - name: Sambayon Italiano
+    category: cremas
+    imageUrl: /products/4/imageUrl.webp
+  - name: Jorgito
+    category: chocolates
+    imageUrl: /products/5/imageUrl.webp
+  - name: Lemon Pie c/ Frutillas
+    imageUrl: /products/6/imageUrl.webp
+  - name: Almendrado
+    category: cremas
+    imageUrl: /products/7/imageUrl.webp
+  - name: Choco Marroc
+    category: chocolates
+    imageUrl: /products/8/imageUrl.webp
+  - name: Chocolate
+    category: chocolates
+  - name: Choco Amargo
+    category: chocolates
+  - name: Choco Suizo
+    category: chocolates
+  - name: Choco Ferrero
+    category: chocolates
+  - name: Choco Bomba
+    category: chocolates
+  - name: Choco Split
+    category: chocolates
+  - name: Choco Turco
+    category: chocolates
+  - name: Choco Los 7
+    category: chocolates
+  - name: Choco Dulzon
+    category: chocolates
+  - name: Choco Shot
+    category: chocolates
+  - name: Choco Italiano
+    category: chocolates
+  - name: Choco Rasta
+    category: chocolates
+  - name: Choco Blanco
+    category: chocolates
+  - name: Choco Buenardo
+    category: chocolates
+  - name: Toblerone
+    category: chocolates
+  - name: Selva Negra
+    category: chocolates
+  - name: Ferrero Rocher
+    category: chocolates
+  - name: Nutella
+    category: chocolates
+  - name: Kinder
+    category: chocolates
+  - name: Mantecol
+    category: chocolates
+  - name: Súper Mantecol
+    category: chocolates
+  - name: Marroc
+    category: chocolates
+  - name: Bon o Bon
+    category: chocolates
+  - name: Dulce de Leche
+    category: dulce-de-leche
+  - name: Súper Dulce
+    category: dulce-de-leche
+  - name: Dulce Granizado
+    category: dulce-de-leche
+  - name: Dulce c/ Nuez
+    category: dulce-de-leche
+  - name: Dulce Bombón
+    category: dulce-de-leche
+    imageUrl: /products/36/imageUrl.webp
+  - name: Dulce Cabsha
+    category: dulce-de-leche
+    imageUrl: /products/37/imageUrl.webp
+  - name: Dulce Oreo
+    category: dulce-de-leche
+  - name: Dulce Especial
+    category: dulce-de-leche
+    imageUrl: /products/39/imageUrl.webp
+  - name: Dulce Tentación
+    category: dulce-de-leche
+  - name: Dulce Nutella
+    category: dulce-de-leche
+  - name: Dulcoco
+    category: dulce-de-leche
+  - name: Chocotorta
+    category: dulce-de-leche
+  - name: Flan c/ Ddl
+    category: dulce-de-leche
+  - name: Tramontana
+    category: dulce-de-leche
+  - name: Frutilla al Agua
+    category: frutales
+  - name: Frutilla a la Crema
+    category: frutales
+  - name: Frutilla Cadbury
+    category: frutales
+  - name: Frutilla a la Reina
+    category: frutales
+  - name: Maracuyá
+    category: frutales
+  - name: Banana
+    category: frutales
+  - name: Banana c/Nutella
+    category: frutales
+  - name: Banana Split
+    category: frutales
+  - name: Vainilla
+    category: cremas
+  - name: Vainilla c/Oreo
+    category: cremas
+    imageUrl: /products/55/imageUrl.webp
+  - name: Americana
+    category: cremas
+  - name: Americana c/ Nutella
+    category: cremas
+  - name: Crema del Cielo
+    category: cremas
+  - name: Crema Rusa
+    category: cremas
+  - name: Mascarpone
+    category: cremas
+  - name: Granizado
+    category: cremas
+  - name: Menta Granizada
+    category: cremas
+  - name: Pistacho
+    category: cremas

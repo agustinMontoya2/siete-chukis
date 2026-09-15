@@ -1,0 +1,49 @@
+---
+import type { PricingData } from "../types";
+import { formatPrice } from "../lib/content";
+
+interface Props {
+  pricing: PricingData;
+}
+
+const { pricing } = Astro.props;
+---
+
+<section class="pricing" id="precios">
+  <h2 class="section-title reveal">{pricing.title}</h2>
+  <div class="section-divider reveal"></div>
+  <div class="panels panels-scroll reveal">
+    {
+      pricing.panels.map((panel) => (
+        <div
+          class={`panel ${panel.highlighted ? "panel-promos" : "panel-prices"}`}
+        >
+          <div class="panel-header">
+            <h3 class="panel-title">{panel.title}</h3>
+          </div>
+          <div class="panel-scroll">
+            {(panel.sections || []).map((section) => (
+              <>
+                {section.label && (
+                  <div
+                    class={`price-row price-section-label${section.spaced ? " price-section-label-spaced" : ""}`}
+                  >
+                    <span class="price-label price-section-text">
+                      {section.label}
+                    </span>
+                  </div>
+                )}
+                {(section.items || []).map((item) => (
+                  <div class="price-row">
+                    <span class="price-label">{item.name}</span>
+                    <span class="price-value">{formatPrice(item.price)}</span>
+                  </div>
+                ))}
+              </>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

@@ -1,0 +1,22 @@
+---
+import type { Product } from "../types";
+import { formatPrice } from "../lib/content";
+
+interface Props {
+  product: Product;
+  fallback?: string;
+}
+
+const { product, fallback } = Astro.props;
+const imgSrc = product.imageUrl || fallback || "/products/default.webp";
+---
+
+<div class="product-card">
+  <img src={imgSrc} alt={product.name} loading="lazy" />
+  <div class="product-card-name">{product.name}</div>
+  {
+    product.price && (
+      <div class="product-card-price">{formatPrice(product.price)}</div>
+    )
+  }
+</div>

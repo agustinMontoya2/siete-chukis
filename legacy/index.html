@@ -1,0 +1,2318 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Los Siete Chukis — Heladería de Terror</title>
+    <meta
+      name="description"
+      content="Heladería artesanal con temática de terror. Helados artesanales, milkshakes, tortas, toppings y bebidas. Precios por cantidad y envíos a domicilio."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --black: #0a0a0a;
+        --black-deep: #050505;
+        --burgundy: #8b1a1a;
+        --burgundy-dark: #5c1010;
+        --burgundy-bright: #c43030;
+        --gold: #d4a843;
+        --gold-light: #e8c96a;
+        --gold-dim: #a07b2e;
+        --cream: #f5e6c8;
+        --cream-soft: #e8d5b0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--black);
+        color: var(--cream);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ===== HERO ===== */
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem 1.5rem;
+        background:
+          radial-gradient(
+            ellipse at 50% 30%,
+            rgba(139, 26, 26, 0.2) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse at 20% 80%,
+            rgba(139, 26, 26, 0.08) 0%,
+            transparent 50%
+          ),
+          linear-gradient(
+            180deg,
+            var(--black-deep) 0%,
+            var(--black) 50%,
+            #0d0808 100%
+          );
+        overflow: hidden;
+      }
+
+      .hero-vignette {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at center,
+          transparent 40%,
+          rgba(0, 0, 0, 0.7) 100%
+        );
+        pointer-events: none;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 600px;
+      }
+
+      .logo-ring {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        border: 4px solid var(--gold);
+        background: var(--black);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        box-shadow:
+          0 4px 20px rgba(0, 0, 0, 0.6),
+          inset 0 2px 10px rgba(0, 0, 0, 0.4);
+      }
+
+      .logo-ring img {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .brand-name {
+        font-family: "Creepster", cursive;
+        font-size: clamp(2.8rem, 8vw, 5rem);
+        color: var(--gold);
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+        letter-spacing: 0.05em;
+        line-height: 1.1;
+        margin-bottom: 0.5rem;
+      }
+
+      .brand-sub {
+        font-family: "Inter", sans-serif;
+        font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+        color: var(--gold-dim);
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        margin-bottom: 2rem;
+      }
+
+      .tagline {
+        font-family: "Creepster", cursive;
+        font-size: clamp(1.4rem, 4vw, 2.2rem);
+        color: #e54848;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+        margin-bottom: 2.5rem;
+      }
+
+      .scroll-hint {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--gold-dim);
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        animation: float 3s ease-in-out infinite;
+        z-index: 2;
+      }
+
+      .scroll-hint svg {
+        width: 20px;
+        height: 20px;
+        stroke: var(--gold-dim);
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(6px);
+        }
+      }
+
+      /* ===== SECTION TITLES ===== */
+      .section-title {
+        font-family: "Creepster", cursive;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        color: var(--gold);
+        text-align: center;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+        margin-bottom: 0.5rem;
+      }
+
+      .section-divider {
+        width: 80px;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+        margin: 0 auto 2.5rem;
+      }
+
+      /* ===== SWIPER GLOBAL ===== */
+      .product-section {
+        padding: 4rem 0;
+        background: var(--black);
+        overflow: visible;
+      }
+
+      .product-section:nth-child(even) {
+        background:
+          radial-gradient(
+            ellipse at 50% 0%,
+            rgba(139, 26, 26, 0.06) 0%,
+            transparent 60%
+          ),
+          var(--black);
+      }
+
+      .product-section .swiper {
+        width: 100%;
+        padding: 1rem 0 3rem;
+        overflow: hidden;
+      }
+
+      .product-section .swiper-slide {
+        width: 240px;
+        transition: transform 0.4s ease;
+      }
+
+      @media (min-width: 700px) {
+        .product-section .swiper-slide {
+          width: 280px;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .product-section .swiper-slide {
+          width: 300px;
+        }
+      }
+
+      .product-section .swiper-button-next,
+      .product-section .swiper-button-prev {
+        color: var(--gold);
+        width: 40px;
+        height: 40px;
+        background: rgba(10, 10, 10, 0.7);
+        border-radius: 50%;
+        backdrop-filter: blur(4px);
+        transition: all 0.3s ease;
+      }
+
+      .product-section .swiper-button-next::after,
+      .product-section .swiper-button-prev::after {
+        font-size: 16px;
+      }
+
+      .product-section .swiper-button-next:hover,
+      .product-section .swiper-button-prev:hover {
+        background: var(--gold);
+        color: var(--black);
+      }
+
+      /* ===== PRODUCT CARDS ===== */
+      .product-card {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-radius: 16px;
+        overflow: hidden;
+        aspect-ratio: 3/4;
+        cursor: pointer;
+        transition:
+          transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+          box-shadow 0.4s ease;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+        background: #111;
+        margin: 0 auto;
+      }
+
+      .product-card:hover {
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
+      }
+
+      .product-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+
+      .product-card:hover img {
+        transform: scale(1.06);
+      }
+
+      .product-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.85) 0%,
+          rgba(0, 0, 0, 0.2) 40%,
+          transparent 70%
+        );
+      }
+
+      .product-card-name {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 1.5rem;
+        z-index: 2;
+        font-family: "Creepster", cursive;
+        font-size: 1.6rem;
+        color: var(--gold);
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+        text-transform: capitalize;
+      }
+
+      .product-card-price {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 1.5rem;
+        z-index: 2;
+        font-family: "Inter", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--gold-light);
+      }
+
+      .product-card-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 2;
+        background: var(--burgundy);
+        color: var(--gold-light);
+        font-family: "Inter", sans-serif;
+        font-size: 0.7rem;
+        font-weight: 600;
+        padding: 0.25rem 0.7rem;
+        border-radius: 20px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        border: 1px solid var(--gold-dim);
+      }
+
+      /* ===== CATEGORY FILTER ===== */
+      .category-filter {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 0 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .category-btn {
+        background: transparent;
+        border: 1px solid var(--gold-dim);
+        color: var(--gold-dim);
+        font-family: "Inter", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 500;
+        padding: 0.5rem 1.2rem;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+      }
+
+      .category-btn:hover {
+        border-color: var(--gold);
+        color: var(--gold);
+      }
+
+      .category-btn.active {
+        background: var(--gold);
+        color: var(--black);
+        border-color: var(--gold);
+        font-weight: 600;
+      }
+
+      /* ===== BOTÓN VER PRECIOS ===== */
+      .btn-prices {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 2rem auto 0;
+        padding: 0.8rem 2rem;
+        background: transparent;
+        border: 2px solid var(--gold);
+        color: var(--gold);
+        font-family: "Creepster", cursive;
+        font-size: 1.1rem;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
+
+      .btn-prices:hover {
+        background: var(--gold);
+        color: var(--black);
+        transform: translateY(-2px);
+      }
+
+      .btn-prices-center {
+        text-align: center;
+      }
+
+      /* ===== PRICING SECTION ===== */
+      .pricing {
+        padding: 5rem 1.5rem;
+        background:
+          radial-gradient(
+            ellipse at 30% 50%,
+            rgba(139, 26, 26, 0.1) 0%,
+            transparent 60%
+          ),
+          var(--black-deep);
+      }
+
+      .panels {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .panels-scroll {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+        max-width: 1100px;
+        margin: 0 auto;
+        scrollbar-width: none;
+      }
+
+      .panels-scroll::-webkit-scrollbar {
+        display: none;
+      }
+
+      .panels-scroll > .panel {
+        max-height: 450px;
+        overflow-y: auto;
+      }
+
+      .panel {
+        border-radius: 16px;
+        padding: 2rem;
+        position: relative;
+        overflow: hidden;
+        border: 2px solid var(--gold-dim);
+        background: var(--black-deep);
+        max-height: 450px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .panel-scroll {
+        flex: 1;
+        overflow-y: auto;
+        padding-right: 0.5rem;
+        scrollbar-color: rgba(212, 168, 67, 0.3) transparent;
+        scrollbar-width: thin;
+      }
+
+      .panel-scroll::-webkit-scrollbar {
+        width: 3px;
+      }
+
+      .panel-scroll::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .panel-scroll::-webkit-scrollbar-thumb {
+        background: rgba(212, 168, 67, 0.3);
+        border-radius: 4px;
+      }
+
+      .panel-prices {
+        background: linear-gradient(
+          135deg,
+          var(--burgundy) 0%,
+          var(--burgundy-dark) 100%
+        );
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+        border-color: var(--gold);
+      }
+
+      .panel-promos {
+        background: linear-gradient(135deg, #1a1a1a 0%, var(--black) 100%);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .panel-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(212, 168, 67, 0.3);
+      }
+
+      .panel-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--gold);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .panel-icon svg {
+        width: 18px;
+        height: 18px;
+        stroke: var(--black);
+        fill: none;
+      }
+
+      .panel-title {
+        font-family: "Creepster", cursive;
+        font-size: 1.6rem;
+        color: var(--gold);
+      }
+
+      .price-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid rgba(212, 168, 67, 0.12);
+      }
+
+      .price-row:last-child {
+        border-bottom: none;
+      }
+
+      .price-label {
+        font-family: "Inter", sans-serif;
+        font-size: 1rem;
+        color: var(--cream-soft);
+        font-weight: 500;
+      }
+
+      .price-value {
+        font-family: "Creepster", cursive;
+        font-size: 1.3rem;
+        color: var(--gold-light);
+      }
+
+      /* ===== SHIPPING SECTION ===== */
+      .shipping {
+        padding: 4rem 1.5rem;
+        background:
+          radial-gradient(
+            ellipse at 70% 50%,
+            rgba(139, 26, 26, 0.06) 0%,
+            transparent 50%
+          ),
+          var(--black);
+      }
+
+      .shipping-card {
+        max-width: 500px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, #2a2015 0%, #1a1510 100%);
+        border: 2px solid var(--gold-dim);
+        border-radius: 16px;
+        padding: 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .shipping-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .shipping-icon {
+        font-size: 2.5rem;
+      }
+
+      .shipping-title {
+        font-family: "Creepster", cursive;
+        font-size: 1.6rem;
+        color: var(--gold);
+      }
+
+      .shipping-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.6rem 0;
+      }
+
+      .shipping-label {
+        color: var(--cream-soft);
+        font-size: 0.95rem;
+      }
+
+      .shipping-value {
+        font-family: "Creepster", cursive;
+        font-size: 1.2rem;
+        color: var(--gold-light);
+      }
+
+      .shipping-note {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(212, 168, 67, 0.15);
+        font-size: 0.8rem;
+        color: var(--gold-dim);
+        text-align: center;
+        font-style: italic;
+      }
+
+      /* ===== LOCATION SECTION ===== */
+      .location {
+        padding: 4rem 1.5rem;
+        background:
+          radial-gradient(
+            ellipse at 50% 50%,
+            rgba(139, 26, 26, 0.08) 0%,
+            transparent 50%
+          ),
+          var(--black-deep);
+      }
+
+      .location-card {
+        max-width: 500px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, #151210 0%, #0d0b0a 100%);
+        border: 2px solid var(--gold-dim);
+        border-radius: 16px;
+        padding: 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .location-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+
+      .location-title {
+        font-family: "Creepster", cursive;
+        font-size: 1.6rem;
+        color: var(--gold);
+      }
+
+      .location-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 0.6rem 0;
+      }
+
+      .location-row-icon {
+        flex-shrink: 0;
+        width: 20px;
+        text-align: center;
+        font-size: 1.1rem;
+        color: var(--gold-dim);
+      }
+
+      .location-row-text {
+        color: var(--cream-soft);
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .location-row-text strong {
+        color: var(--gold-light);
+        font-weight: 600;
+      }
+
+      .btn-maps {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+        padding: 0.8rem 1.5rem;
+        background: var(--gold);
+        color: var(--black);
+        font-family: "Inter", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        border: none;
+        border-radius: 50px;
+        text-decoration: none;
+        cursor: pointer;
+        transition:
+          background 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      .btn-maps:hover {
+        background: var(--gold-light);
+        transform: translateY(-2px);
+      }
+
+      .btn-maps svg {
+        width: 16px;
+        height: 16px;
+        fill: var(--black);
+      }
+
+      /* ===== CTA SECTION ===== */
+      .cta {
+        padding: 3rem 1.5rem;
+        text-align: center;
+        background:
+          radial-gradient(
+            ellipse at 50% 50%,
+            rgba(139, 26, 26, 0.15) 0%,
+            transparent 60%
+          ),
+          var(--black-deep);
+      }
+
+      .cta-title {
+        font-family: "Creepster", cursive;
+        font-size: clamp(1.4rem, 4vw, 2rem);
+        color: var(--gold);
+        margin-bottom: 0.8rem;
+      }
+
+      .cta-sub {
+        color: var(--cream-soft);
+        font-size: 0.85rem;
+        margin-bottom: 1.5rem;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.6;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.7rem 1.4rem;
+        border-radius: 50px;
+        font-family: "Inter", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        cursor: pointer;
+        border: none;
+      }
+
+      .btn svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .btn-whatsapp {
+        background: #25d366;
+        color: #fff;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        flex-direction: column;
+        gap: 0.2rem;
+        padding: 0.7rem 1.4rem;
+      }
+
+      .btn-whatsapp:hover {
+        background: #15803d;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-whatsapp-number {
+        font-size: 0.6rem;
+        font-weight: 400;
+        opacity: 0.8;
+        letter-spacing: 0.02em;
+      }
+
+      .btn-instagram {
+        background: linear-gradient(135deg, #833ab4, #fd1d1d, #f77737);
+        color: #fff;
+        box-shadow: 0 4px 16px rgba(131, 58, 180, 0.25);
+      }
+
+      .btn-instagram:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 24px rgba(131, 58, 180, 0.35);
+      }
+
+      /* ===== FOOTER ===== */
+      .footer {
+        padding: 3rem 1.5rem;
+        text-align: center;
+        background: var(--black-deep);
+        border-top: 1px solid rgba(212, 168, 67, 0.1);
+      }
+
+      .footer-brand {
+        font-family: "Creepster", cursive;
+        font-size: 1.3rem;
+        color: var(--gold-dim);
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-tagline {
+        font-family: "Creepster", cursive;
+        font-size: 1rem;
+        color: #e54848;
+        margin-bottom: 1.5rem;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .footer-links a {
+        color: var(--gold-dim);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--gold);
+      }
+
+      .footer-copy {
+        font-size: 0.75rem;
+        color: rgba(245, 230, 200, 0.3);
+      }
+
+      /* ===== SCROLL ANIMATIONS ===== */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1),
+          transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 699px) {
+        .hero-chucky {
+          display: none;
+        }
+        .product-section .swiper-button-next,
+        .product-section .swiper-button-prev {
+          display: none;
+        }
+      }
+
+      /* ===== SCROLLBAR ===== */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--black);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--gold-dim);
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--gold);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero-vignette"></div>
+      <div class="hero-content">
+        <div class="logo-ring">
+          <img
+            src="logo.jpg"
+            alt="Logo Los Siete Chukis"
+            width="160"
+            height="160"
+          />
+        </div>
+        <h1 class="brand-name">Los Siete Chukis</h1>
+        <p class="brand-sub">Heladería Artesanal</p>
+        <p class="tagline">¡Dulzura y Sabor!</p>
+      </div>
+      <div class="scroll-hint">
+        <span>Descubrí nuestros sabores</span>
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke-width="2"
+          stroke-linecap="round"
+        >
+          <path d="M12 5v14M5 12l7 7 7-7" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- ===== HELADOS ===== -->
+    <section class="product-section" id="sabores">
+      <h2 class="section-title reveal">Helados</h2>
+      <div class="section-divider reveal"></div>
+      <div class="category-filter reveal" id="helados-filter">
+        <button class="category-btn active" data-category="todos">Todos</button>
+        <button class="category-btn" data-category="chocolates">
+          Chocolates
+        </button>
+        <button class="category-btn" data-category="dulce-de-leche">
+          Dulce de Leche
+        </button>
+        <button class="category-btn" data-category="frutales">Frutales</button>
+        <button class="category-btn" data-category="cremas">
+          Cremas y Otros
+        </button>
+      </div>
+      <div class="swiper helados-swiper">
+        <div class="swiper-wrapper" id="helados-wrapper">
+          <!-- CHOCOLATES -->
+          <div class="swiper-slide" data-cat="chocolates">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=600&h=800&fit=crop"
+                alt="Chocolate"
+                loading="lazy"
+              /><span class="product-card-badge">Chocolates</span>
+              <div class="product-card-name">Chocolate</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="chocolates">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1579954115563-e763c1b52e05?w=600&h=800&fit=crop"
+                alt="Choco Amargo"
+                loading="lazy"
+              /><span class="product-card-badge">Chocolates</span>
+              <div class="product-card-name">Choco Amargo</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="chocolates">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1548907040-4baa42d10919?w=600&h=800&fit=crop"
+                alt="Choco Suizo"
+                loading="lazy"
+              /><span class="product-card-badge">Chocolates</span>
+              <div class="product-card-name">Choco Suizo</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="chocolates">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=600&h=800&fit=crop"
+                alt="Choco Marroc"
+                loading="lazy"
+              /><span class="product-card-badge">Chocolates</span>
+              <div class="product-card-name">Choco Marroc</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="chocolates">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1579954115563-e763c1b52e05?w=600&h=800&fit=crop"
+                alt="Choco Ferrero"
+                loading="lazy"
+              /><span class="product-card-badge">Chocolates</span>
+              <div class="product-card-name">Choco Ferrero</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="chocolates">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1548907040-4baa42d10919?w=600&h=800&fit=crop"
+                alt="Choco Bomba"
+                loading="lazy"
+              /><span class="product-card-badge">Chocolates</span>
+              <div class="product-card-name">Choco Bomba</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="chocolates">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=600&h=800&fit=crop"
+                alt="Choco Split"
+                loading="lazy"
+              /><span class="product-card-badge">Chocolates</span>
+              <div class="product-card-name">Choco Split</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="chocolates">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1579954115563-e763c1b52e05?w=600&h=800&fit=crop"
+                alt="Choco Turco"
+                loading="lazy"
+              /><span class="product-card-badge">Chocolates</span>
+              <div class="product-card-name">Choco Turco</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="chocolates">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1548907040-4baa42d10919?w=600&h=800&fit=crop"
+                alt="Choco Los 7"
+                loading="lazy"
+              /><span class="product-card-badge">Chocolates</span>
+              <div class="product-card-name">Choco Los 7</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="chocolates">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=600&h=800&fit=crop"
+                alt="Choco Dulzon"
+                loading="lazy"
+              /><span class="product-card-badge">Chocolates</span>
+              <div class="product-card-name">Choco Dulzon</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="chocolates">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1579954115563-e763c1b52e05?w=600&h=800&fit=crop"
+                alt="Choco Shot"
+                loading="lazy"
+              /><span class="product-card-badge">Chocolates</span>
+              <div class="product-card-name">Choco Shot</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="chocolates">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1548907040-4baa42d10919?w=600&h=800&fit=crop"
+                alt="Choco Italiano"
+                loading="lazy"
+              /><span class="product-card-badge">Chocolates</span>
+              <div class="product-card-name">Choco Italiano</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="chocolates">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=600&h=800&fit=crop"
+                alt="Choco Rasta"
+                loading="lazy"
+              /><span class="product-card-badge">Chocolates</span>
+              <div class="product-card-name">Choco Rasta</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="chocolates">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1579954115563-e763c1b52e05?w=600&h=800&fit=crop"
+                alt="Choco Blanco"
+                loading="lazy"
+              /><span class="product-card-badge">Chocolates</span>
+              <div class="product-card-name">Choco Blanco</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="chocolates">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1548907040-4baa42d10919?w=600&h=800&fit=crop"
+                alt="Choco Buenardo"
+                loading="lazy"
+              /><span class="product-card-badge">Chocolates</span>
+              <div class="product-card-name">Choco Buenardo</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="chocolates">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=600&h=800&fit=crop"
+                alt="Toblerone"
+                loading="lazy"
+              /><span class="product-card-badge">Chocolates</span>
+              <div class="product-card-name">Toblerone</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="chocolates">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1579954115563-e763c1b52e05?w=600&h=800&fit=crop"
+                alt="Selva Negra"
+                loading="lazy"
+              /><span class="product-card-badge">Chocolates</span>
+              <div class="product-card-name">Selva Negra</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="chocolates">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1548907040-4baa42d10919?w=600&h=800&fit=crop"
+                alt="Ferrero Rocher"
+                loading="lazy"
+              /><span class="product-card-badge">Chocolates</span>
+              <div class="product-card-name">Ferrero Rocher</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="chocolates">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=600&h=800&fit=crop"
+                alt="Nutella"
+                loading="lazy"
+              /><span class="product-card-badge">Chocolates</span>
+              <div class="product-card-name">Nutella</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="chocolates">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1579954115563-e763c1b52e05?w=600&h=800&fit=crop"
+                alt="Kinder"
+                loading="lazy"
+              /><span class="product-card-badge">Chocolates</span>
+              <div class="product-card-name">Kinder</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="chocolates">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1548907040-4baa42d10919?w=600&h=800&fit=crop"
+                alt="Mantecol"
+                loading="lazy"
+              /><span class="product-card-badge">Chocolates</span>
+              <div class="product-card-name">Mantecol</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="chocolates">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=600&h=800&fit=crop"
+                alt="Súper Mantecol"
+                loading="lazy"
+              /><span class="product-card-badge">Chocolates</span>
+              <div class="product-card-name">Súper Mantecol</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="chocolates">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1579954115563-e763c1b52e05?w=600&h=800&fit=crop"
+                alt="Marroc"
+                loading="lazy"
+              /><span class="product-card-badge">Chocolates</span>
+              <div class="product-card-name">Marroc</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="chocolates">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1548907040-4baa42d10919?w=600&h=800&fit=crop"
+                alt="Bon o Bon"
+                loading="lazy"
+              /><span class="product-card-badge">Chocolates</span>
+              <div class="product-card-name">Bon o Bon</div>
+            </div>
+          </div>
+          <!-- DULCE DE LECHE -->
+          <div class="swiper-slide" data-cat="dulce-de-leche">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&h=800&fit=crop"
+                alt="Dulce de Leche"
+                loading="lazy"
+              /><span class="product-card-badge">Dulce de Leche</span>
+              <div class="product-card-name">Dulce de Leche</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="dulce-de-leche">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1570197571499-166b36435e9f?w=600&h=800&fit=crop"
+                alt="Súper Dulce"
+                loading="lazy"
+              /><span class="product-card-badge">Dulce de Leche</span>
+              <div class="product-card-name">Súper Dulce</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="dulce-de-leche">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&h=800&fit=crop"
+                alt="Dulce Granizado"
+                loading="lazy"
+              /><span class="product-card-badge">Dulce de Leche</span>
+              <div class="product-card-name">Dulce Granizado</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="dulce-de-leche">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1570197571499-166b36435e9f?w=600&h=800&fit=crop"
+                alt="Dulce c/ Nuez"
+                loading="lazy"
+              /><span class="product-card-badge">Dulce de Leche</span>
+              <div class="product-card-name">Dulce c/ Nuez</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="dulce-de-leche">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&h=800&fit=crop"
+                alt="Dulce Bombón"
+                loading="lazy"
+              /><span class="product-card-badge">Dulce de Leche</span>
+              <div class="product-card-name">Dulce Bombón</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="dulce-de-leche">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1570197571499-166b36435e9f?w=600&h=800&fit=crop"
+                alt="Dulce Cabsha"
+                loading="lazy"
+              /><span class="product-card-badge">Dulce de Leche</span>
+              <div class="product-card-name">Dulce Cabsha</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="dulce-de-leche">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&h=800&fit=crop"
+                alt="Dulce Oreo"
+                loading="lazy"
+              /><span class="product-card-badge">Dulce de Leche</span>
+              <div class="product-card-name">Dulce Oreo</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="dulce-de-leche">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1570197571499-166b36435e9f?w=600&h=800&fit=crop"
+                alt="Dulce Especial"
+                loading="lazy"
+              /><span class="product-card-badge">Dulce de Leche</span>
+              <div class="product-card-name">Dulce Especial</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="dulce-de-leche">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&h=800&fit=crop"
+                alt="Dulce Tentación"
+                loading="lazy"
+              /><span class="product-card-badge">Dulce de Leche</span>
+              <div class="product-card-name">Dulce Tentación</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="dulce-de-leche">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1570197571499-166b36435e9f?w=600&h=800&fit=crop"
+                alt="Dulce Nutella"
+                loading="lazy"
+              /><span class="product-card-badge">Dulce de Leche</span>
+              <div class="product-card-name">Dulce Nutella</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="dulce-de-leche">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&h=800&fit=crop"
+                alt="Dulcoco"
+                loading="lazy"
+              /><span class="product-card-badge">Dulce de Leche</span>
+              <div class="product-card-name">Dulcoco</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="dulce-de-leche">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1570197571499-166b36435e9f?w=600&h=800&fit=crop"
+                alt="Chocotorta"
+                loading="lazy"
+              /><span class="product-card-badge">Dulce de Leche</span>
+              <div class="product-card-name">Chocotorta</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="dulce-de-leche">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&h=800&fit=crop"
+                alt="Flan c/ Ddl"
+                loading="lazy"
+              /><span class="product-card-badge">Dulce de Leche</span>
+              <div class="product-card-name">Flan c/ Ddl</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="dulce-de-leche">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1570197571499-166b36435e9f?w=600&h=800&fit=crop"
+                alt="Tramontana"
+                loading="lazy"
+              /><span class="product-card-badge">Dulce de Leche</span>
+              <div class="product-card-name">Tramontana</div>
+            </div>
+          </div>
+          <!-- FRUTALES -->
+          <div class="swiper-slide" data-cat="frutales">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=600&h=800&fit=crop"
+                alt="Frutilla al Agua"
+                loading="lazy"
+              /><span class="product-card-badge">Frutales</span>
+              <div class="product-card-name">Frutilla al Agua</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="frutales">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?w=600&h=800&fit=crop"
+                alt="Frutilla a la Crema"
+                loading="lazy"
+              /><span class="product-card-badge">Frutales</span>
+              <div class="product-card-name">Frutilla a la Crema</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="frutales">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=600&h=800&fit=crop"
+                alt="Frutilla Cadbury"
+                loading="lazy"
+              /><span class="product-card-badge">Frutales</span>
+              <div class="product-card-name">Frutilla Cadbury</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="frutales">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?w=600&h=800&fit=crop"
+                alt="Frutilla a la Reina"
+                loading="lazy"
+              /><span class="product-card-badge">Frutales</span>
+              <div class="product-card-name">Frutilla a la Reina</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="frutales">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1528821128474-27f963b062bf?w=600&h=800&fit=crop"
+                alt="Cereza"
+                loading="lazy"
+              /><span class="product-card-badge">Frutales</span>
+              <div class="product-card-name">Cereza</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="frutales">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=600&h=800&fit=crop"
+                alt="Maracuyá"
+                loading="lazy"
+              /><span class="product-card-badge">Frutales</span>
+              <div class="product-card-name">Maracuyá</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="frutales">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1528821128474-27f963b062bf?w=600&h=800&fit=crop"
+                alt="Banana"
+                loading="lazy"
+              /><span class="product-card-badge">Frutales</span>
+              <div class="product-card-name">Banana</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="frutales">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=600&h=800&fit=crop"
+                alt="Banana c/Nutella"
+                loading="lazy"
+              /><span class="product-card-badge">Frutales</span>
+              <div class="product-card-name">Banana c/Nutella</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="frutales">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1528821128474-27f963b062bf?w=600&h=800&fit=crop"
+                alt="Banana Dolca"
+                loading="lazy"
+              /><span class="product-card-badge">Frutales</span>
+              <div class="product-card-name">Banana Dolca</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="frutales">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=600&h=800&fit=crop"
+                alt="Banana Split"
+                loading="lazy"
+              /><span class="product-card-badge">Frutales</span>
+              <div class="product-card-name">Banana Split</div>
+            </div>
+          </div>
+          <!-- CREMAS Y OTROS -->
+          <div class="swiper-slide" data-cat="cremas">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&h=800&fit=crop"
+                alt="Vainilla"
+                loading="lazy"
+              /><span class="product-card-badge">Cremas</span>
+              <div class="product-card-name">Vainilla</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="cremas">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1570197571499-166b36435e9f?w=600&h=800&fit=crop"
+                alt="Vainilla c/Oreo"
+                loading="lazy"
+              /><span class="product-card-badge">Cremas</span>
+              <div class="product-card-name">Vainilla c/Oreo</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="cremas">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&h=800&fit=crop"
+                alt="Crema Oreo"
+                loading="lazy"
+              /><span class="product-card-badge">Cremas</span>
+              <div class="product-card-name">Crema Oreo</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="cremas">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1570197571499-166b36435e9f?w=600&h=800&fit=crop"
+                alt="Americana"
+                loading="lazy"
+              /><span class="product-card-badge">Cremas</span>
+              <div class="product-card-name">Americana</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="cremas">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&h=800&fit=crop"
+                alt="Americana c/ Nutella"
+                loading="lazy"
+              /><span class="product-card-badge">Cremas</span>
+              <div class="product-card-name">Americana c/ Nutella</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="cremas">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1570197571499-166b36435e9f?w=600&h=800&fit=crop"
+                alt="Crema del Cielo"
+                loading="lazy"
+              /><span class="product-card-badge">Cremas</span>
+              <div class="product-card-name">Crema del Cielo</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="cremas">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&h=800&fit=crop"
+                alt="Crema Rusa"
+                loading="lazy"
+              /><span class="product-card-badge">Cremas</span>
+              <div class="product-card-name">Crema Rusa</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="cremas">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1570197571499-166b36435e9f?w=600&h=800&fit=crop"
+                alt="Mascarpone"
+                loading="lazy"
+              /><span class="product-card-badge">Cremas</span>
+              <div class="product-card-name">Mascarpone</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="cremas">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&h=800&fit=crop"
+                alt="Granizado"
+                loading="lazy"
+              /><span class="product-card-badge">Cremas</span>
+              <div class="product-card-name">Granizado</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="cremas">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1570197571499-166b36435e9f?w=600&h=800&fit=crop"
+                alt="Menta Granizada"
+                loading="lazy"
+              /><span class="product-card-badge">Cremas</span>
+              <div class="product-card-name">Menta Granizada</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="cremas">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&h=800&fit=crop"
+                alt="Pistacho"
+                loading="lazy"
+              /><span class="product-card-badge">Cremas</span>
+              <div class="product-card-name">Pistacho</div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </section>
+
+    <!-- ===== MILKSHAKES ===== -->
+    <section class="product-section" id="milkshakes">
+      <h2 class="section-title reveal">Milkshakes</h2>
+      <div class="section-divider reveal"></div>
+      <div class="swiper milkshakes-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=600&h=800&fit=crop"
+                alt="Milkshake de Chocolate"
+                loading="lazy"
+              />
+              <div class="product-card-name">Chocolate</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1579954115563-e763c1b52e05?w=600&h=800&fit=crop"
+                alt="Milkshake de Vainilla"
+                loading="lazy"
+              />
+              <div class="product-card-name">Vainilla</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?w=600&h=800&fit=crop"
+                alt="Milkshake de Frutilla"
+                loading="lazy"
+              />
+              <div class="product-card-name">Frutilla</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?w=600&h=800&fit=crop"
+                alt="Milkshake Oreo"
+                loading="lazy"
+              /><span class="product-card-badge">Con crema</span>
+              <div class="product-card-name">Oreo</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1567206563004-ea4c03be5e88?w=600&h=800&fit=crop"
+                alt="Milkshake de Dulce de Leche"
+                loading="lazy"
+              /><span class="product-card-badge">Con crema</span>
+              <div class="product-card-name">Dulce de Leche</div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </section>
+
+    <!-- ===== TORTAS ===== -->
+    <section class="product-section" id="tortas">
+      <h2 class="section-title reveal">Tortas</h2>
+      <div class="section-divider reveal"></div>
+      <div class="swiper tortas-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&h=800&fit=crop"
+                alt="Torta Selva Negra"
+                loading="lazy"
+              /><span class="product-card-badge">Estrella</span>
+              <div class="product-card-name">Selva Negra</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1524351199678-941a58a3df50?w=600&h=800&fit=crop"
+                alt="Torta Cheesecake"
+                loading="lazy"
+              />
+              <div class="product-card-name">Cheesecake</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600&h=800&fit=crop"
+                alt="Torta Tiramisú"
+                loading="lazy"
+              />
+              <div class="product-card-name">Tiramisú</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=600&h=800&fit=crop"
+                alt="Torta de Chocolate"
+                loading="lazy"
+              />
+              <div class="product-card-name">Chocolate</div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </section>
+
+    <!-- ===== BEBIDAS Y MÁS ===== -->
+    <section class="product-section" id="bebidas">
+      <h2 class="section-title reveal">Otros</h2>
+      <div class="section-divider reveal"></div>
+      <div class="category-filter reveal" id="otros-filter">
+        <button class="category-btn active" data-category="todos">Todos</button>
+        <button class="category-btn" data-category="bebidas">Bebidas</button>
+        <button class="category-btn" data-category="hielos">Hielos</button>
+      </div>
+      <div class="swiper bebidas-swiper">
+        <div class="swiper-wrapper" id="otros-wrapper">
+          <div class="swiper-slide" data-cat="bebidas">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=600&h=800&fit=crop"
+                alt="Gaseosa"
+                loading="lazy"
+              />
+              <div class="product-card-name">Gaseosa 500ml</div>
+              <div class="product-card-price">$1.500</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="bebidas">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=600&h=800&fit=crop"
+                alt="Jugo Natural"
+                loading="lazy"
+              />
+              <div class="product-card-name">Jugo Natural</div>
+              <div class="product-card-price">$1.800</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="bebidas">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1523362628745-0c100fc988ac?w=600&h=800&fit=crop"
+                alt="Agua Mineral"
+                loading="lazy"
+              />
+              <div class="product-card-name">Agua Mineral</div>
+              <div class="product-card-price">$1.000</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="bebidas">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1638176066666-ffb2f013c7dd?w=600&h=800&fit=crop"
+                alt="Licuado"
+                loading="lazy"
+              />
+              <span class="product-card-badge">Fresh</span>
+              <div class="product-card-name">Licuado</div>
+              <div class="product-card-price">$2.500</div>
+            </div>
+          </div>
+          <div class="swiper-slide" data-cat="hielos">
+            <div class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=600&h=800&fit=crop"
+                alt="Bolsa de Hielo"
+                loading="lazy"
+              />
+              <div class="product-card-name">Bolsa de Hielo 2.5kg</div>
+              <div class="product-card-price">$3.000</div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </section>
+
+    <!-- ===== PRICING ===== -->
+    <section class="pricing" id="precios">
+      <h2 class="section-title reveal">Precios</h2>
+      <div class="section-divider reveal"></div>
+      <div class="panels panels-scroll reveal">
+        <div class="panel panel-prices">
+          <div class="panel-header">
+            <div class="panel-icon">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M8 12s1.5-4 4-4 4 4 4 4-1.5 4-4 4-4-4-4-4z" />
+              </svg>
+            </div>
+            <h3 class="panel-title">Helados</h3>
+          </div>
+          <div class="panel-scroll">
+            <div
+              class="price-row"
+              style="border-bottom: 1px solid rgba(212, 168, 67, 0.25)"
+            >
+              <span
+                class="price-label"
+                style="font-weight: 700; color: var(--gold)"
+                >Por Bocha</span
+              >
+            </div>
+            <div class="price-row">
+              <span class="price-label">1 bocha</span>
+              <span class="price-value">$2.500</span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">2 bochas</span>
+              <span class="price-value">$3.000</span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">3 bochas</span>
+              <span class="price-value">$3.500</span>
+            </div>
+            <div
+              class="price-row"
+              style="
+                margin-top: 0.8rem;
+                border-bottom: 1px solid rgba(212, 168, 67, 0.25);
+              "
+            >
+              <span
+                class="price-label"
+                style="font-weight: 700; color: var(--gold)"
+                >Por Cantidad</span
+              >
+            </div>
+            <div class="price-row">
+              <span class="price-label">1 kg</span>
+              <span class="price-value">$13.000</span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">1/2 kg</span>
+              <span class="price-value">$7.000</span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">1/4 kg</span>
+              <span class="price-value">$4.300</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-prices">
+          <div class="panel-header">
+            <div class="panel-icon">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round">
+                <path
+                  d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"
+                />
+              </svg>
+            </div>
+            <h3 class="panel-title">Agregados</h3>
+          </div>
+          <div class="panel-scroll">
+            <div
+              class="price-row"
+              style="border-bottom: 1px solid rgba(212, 168, 67, 0.25)"
+            >
+              <span
+                class="price-label"
+                style="font-weight: 700; color: var(--gold)"
+                >Salsas para helado</span
+              >
+            </div>
+            <div class="price-row">
+              <span class="price-label">Salsa Chocolate</span>
+              <span class="price-value">$500</span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">Salsa Frutilla</span>
+              <span class="price-value">$500</span>
+            </div>
+            <div
+              class="price-row"
+              style="
+                margin-top: 0.8rem;
+                border-bottom: 1px solid rgba(212, 168, 67, 0.25);
+              "
+            >
+              <span
+                class="price-label"
+                style="font-weight: 700; color: var(--gold)"
+                >Toppings para milkshake</span
+              >
+            </div>
+            <div class="price-row">
+              <span class="price-label">Sprinkles</span>
+              <span class="price-value">$1.000</span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">Chantilly</span>
+              <span class="price-value">$1.000</span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">Granola</span>
+              <span class="price-value">$1.000</span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">Chips Chocolate</span>
+              <span class="price-value">$1.000</span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">Cereza</span>
+              <span class="price-value">$1.000</span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">Banana</span>
+              <span class="price-value">$1.000</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-prices">
+          <div class="panel-header">
+            <div class="panel-icon">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round">
+                <path
+                  d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"
+                />
+                <line x1="6" y1="1" x2="6" y2="4" />
+                <line x1="10" y1="1" x2="10" y2="4" />
+                <line x1="14" y1="1" x2="14" y2="4" />
+              </svg>
+            </div>
+            <h3 class="panel-title">Milkshakes</h3>
+          </div>
+          <div class="panel-scroll">
+            <div class="price-row">
+              <span class="price-label">Milkshake base</span>
+              <span class="price-value">$3.800</span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">Con crema</span>
+              <span class="price-value">$4.500</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-prices">
+          <div class="panel-header">
+            <div class="panel-icon">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"
+                />
+                <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                <line x1="9" y1="9" x2="9.01" y2="9" />
+                <line x1="15" y1="9" x2="15.01" y2="9" />
+              </svg>
+            </div>
+            <h3 class="panel-title">Tortas</h3>
+          </div>
+          <div class="panel-scroll">
+            <div class="price-row">
+              <span class="price-label">Torta cualquier sabor</span>
+              <span class="price-value">$26.000</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-promos">
+          <div class="panel-header">
+            <div class="panel-icon">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round">
+                <path
+                  d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"
+                />
+                <line x1="7" y1="7" x2="7.01" y2="7" />
+              </svg>
+            </div>
+            <h3 class="panel-title">Promos</h3>
+          </div>
+          <div class="panel-scroll">
+            <div class="price-row">
+              <span class="price-label">2 kg</span>
+              <span class="price-value">$25.500</span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">1 kg + 1/2 kg</span>
+              <span class="price-value">$19.600</span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">1 kg + 1/4 kg</span>
+              <span class="price-value">$17.000</span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">1/2 kg + 1/2 kg</span>
+              <span class="price-value">$13.600</span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">1/2 kg + 1/4 kg</span>
+              <span class="price-value">$11.000</span>
+            </div>
+            <div class="price-row">
+              <span class="price-label">1/4 kg + 1/4 kg</span>
+              <span class="price-value">$8.600</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SHIPPING ===== -->
+    <section class="shipping" id="envios">
+      <h2 class="section-title reveal">Envíos</h2>
+      <div class="section-divider reveal"></div>
+      <div class="shipping-card reveal">
+        <div
+          class="shipping-header"
+          style="justify-content: center; text-align: center"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="var(--gold)"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="1" y="3" width="15" height="13" />
+            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+            <circle cx="5.5" cy="18.5" r="2.5" />
+            <circle cx="18.5" cy="18.5" r="2.5" />
+          </svg>
+          <h3 class="shipping-title">Llevamos tu helado</h3>
+        </div>
+        <div class="shipping-row">
+          <span class="shipping-label">Envío estándar</span>
+          <span class="shipping-value">$1000</span>
+        </div>
+        <div class="shipping-row">
+          <span class="shipping-label">Envío día de lluvia</span>
+          <span class="shipping-value">$1100</span>
+        </div>
+        <p class="shipping-note">* Consultá zonas de cobertura por WhatsApp</p>
+      </div>
+    </section>
+
+    <!-- ===== LOCATION ===== -->
+    <section class="location" id="ubicacion">
+      <h2 class="section-title reveal">Encontranos</h2>
+      <div class="section-divider reveal"></div>
+      <div class="location-card reveal">
+        <div class="location-header">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="var(--gold)"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          <h3 class="location-title">Dónde estamos</h3>
+        </div>
+        <div class="location-row">
+          <span class="location-row-icon">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+          </span>
+          <span class="location-row-text"
+            ><strong>Primero de Mayo 798</strong><br />Loma Hermosa</span
+          >
+        </div>
+        <div class="location-row">
+          <span class="location-row-icon">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+          </span>
+          <span class="location-row-text"
+            ><strong>Mar a Dom:</strong> 17:00 - 23:00<br />Lunes: cerrado</span
+          >
+        </div>
+        <div class="location-row">
+          <span class="location-row-icon">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="1" y="3" width="15" height="13" />
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+              <circle cx="5.5" cy="18.5" r="2.5" />
+              <circle cx="18.5" cy="18.5" r="2.5" />
+            </svg>
+          </span>
+          <span class="location-row-text"
+            ><strong>Zona de envío:</strong> Loma Hermosa y alrededores</span
+          >
+        </div>
+        <a
+          href="https://maps.google.com/?q=Primero+de+Mayo+798+Loma+Hermosa"
+          class="btn-maps"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg viewBox="0 0 24 24">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Cómo llegar
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta" id="pedido">
+      <h2 class="cta-title reveal">¿Te antojaste?</h2>
+      <p class="cta-sub reveal">
+        Hacé tu pedido por WhatsApp o seguinos en Instagram para ver nuestros
+        sabores del día.
+      </p>
+      <div class="cta-buttons reveal">
+        <a
+          href="https://wa.me/5491161367871?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20helado"
+          class="btn btn-whatsapp"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+            />
+          </svg>
+          Pedir por WhatsApp
+          <span class="btn-whatsapp-number">11 6136-7871</span>
+        </a>
+        <a
+          href="https://wa.me/5491127304412?text=Hola!%20Quiero%20hacer%20un%20pedido%20de%20helado"
+          class="btn btn-whatsapp"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+            />
+          </svg>
+          Pedir por WhatsApp
+          <span class="btn-whatsapp-number">11 2730-4412</span>
+        </a>
+        <a
+          href="https://www.instagram.com/los_sietechukis/"
+          class="btn btn-instagram"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+            />
+          </svg>
+          Seguinos en Instagram
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <p class="footer-brand">Los Siete Chukis</p>
+      <p class="footer-tagline">¡Dulzura y Sabor!</p>
+      <div class="footer-links">
+        <a
+          href="https://wa.me/5491161367871"
+          target="_blank"
+          rel="noopener"
+          aria-label="WhatsApp 1"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+            />
+          </svg>
+        </a>
+        <a
+          href="https://wa.me/5491127304412"
+          target="_blank"
+          rel="noopener"
+          aria-label="WhatsApp 2"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+            />
+          </svg>
+        </a>
+        <a
+          href="https://www.instagram.com/los_sietechukis/"
+          target="_blank"
+          rel="noopener"
+          aria-label="Instagram"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+            />
+          </svg>
+        </a>
+      </div>
+      <p class="footer-copy">
+        &copy; 2026 Los Siete Chukis. Todos los derechos reservados.
+      </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+      );
+
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => observer.observe(el));
+
+      document.querySelector(".scroll-hint")?.addEventListener("click", () => {
+        document
+          .querySelector("#sabores")
+          ?.scrollIntoView({ behavior: "smooth" });
+      });
+
+      function createSwiper(selector, opts = {}) {
+        const el = document.querySelector(selector);
+        if (!el) return null;
+        const existing = el.swiper;
+        if (existing) existing.destroy(true, true);
+        return new Swiper(selector, {
+          effect: "coverflow",
+          grabCursor: true,
+          centeredSlides: true,
+          loop: false,
+          slidesPerView: "auto",
+          spaceBetween: 32,
+          coverflowEffect: {
+            rotate: 0,
+            stretch: 0,
+            depth: 120,
+            modifier: 2,
+            slideShadows: false,
+          },
+          navigation: {
+            nextEl: el.querySelector(".swiper-button-next"),
+            prevEl: el.querySelector(".swiper-button-prev"),
+          },
+          breakpoints: {
+            0: { spaceBetween: 16 },
+            700: { spaceBetween: 24 },
+            1024: { spaceBetween: 32 },
+          },
+          ...opts,
+        });
+      }
+
+      createSwiper(".milkshakes-swiper");
+      createSwiper(".tortas-swiper");
+      createSwiper(".bebidas-swiper");
+
+      const allHeladosSlides = Array.from(
+        document.querySelectorAll("#helados-wrapper .swiper-slide"),
+      );
+
+      function initHeladosSwiper(category) {
+        const wrapper = document.getElementById("helados-wrapper");
+        wrapper.innerHTML = "";
+        allHeladosSlides.forEach((slide) => {
+          if (category === "todos" || slide.dataset.cat === category) {
+            wrapper.appendChild(slide.cloneNode(true));
+          }
+        });
+        return createSwiper(".helados-swiper");
+      }
+
+      let heladosSwiper = initHeladosSwiper("todos");
+
+      document
+        .getElementById("helados-filter")
+        ?.addEventListener("click", (e) => {
+          const btn = e.target.closest(".category-btn");
+          if (!btn) return;
+          document
+            .querySelectorAll("#helados-filter .category-btn")
+            .forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          heladosSwiper = initHeladosSwiper(btn.dataset.category);
+        });
+
+      const allOtrosSlides = Array.from(
+        document.querySelectorAll("#otros-wrapper .swiper-slide"),
+      );
+
+      function initOtrosSwiper(category) {
+        const wrapper = document.getElementById("otros-wrapper");
+        wrapper.innerHTML = "";
+        allOtrosSlides.forEach((slide) => {
+          if (category === "todos" || slide.dataset.cat === category) {
+            wrapper.appendChild(slide.cloneNode(true));
+          }
+        });
+        return createSwiper(".bebidas-swiper");
+      }
+
+      let otrosSwiper = initOtrosSwiper("todos");
+
+      document
+        .getElementById("otros-filter")
+        ?.addEventListener("click", (e) => {
+          const btn = e.target.closest(".category-btn");
+          if (!btn) return;
+          document
+            .querySelectorAll("#otros-filter .category-btn")
+            .forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          otrosSwiper = initOtrosSwiper(btn.dataset.category);
+        });
+    </script>
+  </body>
+</html>

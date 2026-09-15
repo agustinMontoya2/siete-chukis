@@ -1,0 +1,32 @@
+---
+import type { ShippingData } from '../types';
+
+interface Props {
+  shipping: ShippingData;
+}
+
+const { shipping } = Astro.props;
+---
+
+<section class="shipping" id="envios">
+  <h2 class="section-title reveal">{shipping.title}</h2>
+  <div class="section-divider reveal"></div>
+  <div class="shipping-card reveal">
+    <div class="shipping-header">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="1" y="3" width="15" height="13"/>
+        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+        <circle cx="5.5" cy="18.5" r="2.5"/>
+        <circle cx="18.5" cy="18.5" r="2.5"/>
+      </svg>
+      <h3 class="shipping-title">{shipping.subtitle}</h3>
+    </div>
+    {shipping.rows.map((row) => (
+      <div class="shipping-row">
+        <span class="shipping-label">{row.label}</span>
+        <span class="shipping-value">{row.price}</span>
+      </div>
+    ))}
+    <p class="shipping-note">{shipping.note}</p>
+  </div>
+</section>

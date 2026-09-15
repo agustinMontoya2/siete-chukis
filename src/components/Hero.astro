@@ -1,0 +1,28 @@
+---
+import type { SiteData } from '../types';
+
+interface Props {
+  site: SiteData;
+}
+
+const { site } = Astro.props;
+const { hero } = site;
+---
+
+<section class="hero">
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <div class="logo-ring reveal">
+      <img src={hero.logoImage || '/logo.jpg'} alt={`Logo ${hero.brandName}`} width="160" height="160" />
+    </div>
+    <h1 class="brand-name reveal">{hero.brandName}</h1>
+    <p class="brand-sub reveal">{hero.brandSubtitle}</p>
+    <p class="tagline reveal">{hero.tagline}</p>
+  </div>
+  <div class="scroll-hint reveal">
+    <span>{hero.scrollHint}</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+      <path d="M12 5v14M5 12l7 7 7-7" />
+    </svg>
+  </div>
+</section>

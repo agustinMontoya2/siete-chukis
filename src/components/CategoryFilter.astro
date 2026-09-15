@@ -1,0 +1,15 @@
+---
+interface Props {
+  filterId: string;
+  filters: { label: string; value: string }[];
+}
+
+const { filterId, filters } = Astro.props;
+---
+
+<div class="category-filter reveal" id={filterId}>
+  <button class="category-btn active" data-category="todos">Todos</button>
+  {filters.map((f) => (
+    <button class="category-btn" data-category={f.value}>{f.label}</button>
+  ))}
+</div>

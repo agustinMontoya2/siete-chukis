@@ -1,0 +1,119 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/jpeg" href="/hero/logoImage.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
+  </head>
+  <body>
+    <slot />
+    <script is:inline src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script is:inline>
+      /* ===== REVEAL ===== */
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' },
+      );
+      document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+      /* ===== SCROLL HINT ===== */
+      document.querySelector('.scroll-hint')?.addEventListener('click', () => {
+        document.querySelector('.product-section')?.scrollIntoView({ behavior: 'smooth' });
+      });
+
+      /* ===== SWIPER ===== */
+      function createSwiper(selector, opts = {}) {
+        const el = document.querySelector(selector);
+        if (!el) return null;
+        const existing = el.swiper;
+        if (existing) existing.destroy(true, true);
+        return new Swiper(selector, {
+          effect: 'coverflow',
+          grabCursor: true,
+          centeredSlides: true,
+          loop: false,
+          slidesPerView: 'auto',
+          spaceBetween: 32,
+          coverflowEffect: {
+            rotate: 0,
+            stretch: 0,
+            depth: 120,
+            modifier: 2,
+            slideShadows: false,
+          },
+          navigation: {
+            nextEl: el.querySelector('.swiper-button-next'),
+            prevEl: el.querySelector('.swiper-button-prev'),
+          },
+          breakpoints: {
+            0: { spaceBetween: 16 },
+            700: { spaceBetween: 24 },
+            1024: { spaceBetween: 32 },
+          },
+          ...opts,
+        });
+      }
+
+      function initFilteredSwiper(sectionId, filterId) {
+        const wrapper = document.getElementById(sectionId + '-wrapper');
+        const filterEl = document.getElementById(filterId);
+        if (!wrapper || !filterEl) return;
+
+        const allSlides = Array.from(wrapper.querySelectorAll('.swiper-slide'));
+
+        function reinit(category) {
+          wrapper.innerHTML = '';
+          allSlides.forEach((slide) => {
+            if (category === 'todos' || slide.dataset.cat === category) {
+              wrapper.appendChild(slide.cloneNode(true));
+            }
+          });
+          const s = createSwiper('#' + sectionId + ' .swiper');
+          if (s) setTimeout(() => s.update(), 50);
+          return s;
+        }
+
+        let swiper = reinit('todos');
+
+        filterEl.addEventListener('click', (e) => {
+          const btn = e.target.closest('.category-btn');
+          if (!btn) return;
+          filterEl.querySelectorAll('.category-btn').forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          swiper = reinit(btn.dataset.category);
+        });
+      }
+
+      document.querySelectorAll('.product-section').forEach((section) => {
+        const filterEl = section.querySelector('.category-filter');
+        if (filterEl) {
+          initFilteredSwiper(section.id, filterEl.id);
+        } else {
+          createSwiper('#' + section.id + ' .swiper');
+        }
+      });
+    </script>
+  </body>
+</html>

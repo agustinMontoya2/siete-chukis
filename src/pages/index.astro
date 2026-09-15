@@ -1,0 +1,29 @@
+---
+import { getSiteData, getPricingData, getSections } from '../lib/content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ProductCarousel from '../components/ProductCarousel.astro';
+import Pricing from '../components/Pricing.astro';
+import Shipping from '../components/Shipping.astro';
+import Location from '../components/Location.astro';
+import CtaSection from '../components/CtaSection.astro';
+import Footer from '../components/Footer.astro';
+
+const site = getSiteData();
+const pricing = getPricingData();
+const sections = getSections();
+---
+
+<BaseLayout title={site.seo.metaTitle} description={site.seo.metaDescription}>
+  <Hero site={site} />
+
+  {sections.map((section) => (
+    <ProductCarousel section={section} fallback={site.products.fallbackImage} />
+  ))}
+
+  <Pricing pricing={pricing} />
+  <Shipping shipping={site.shipping} />
+  <Location site={site} />
+  <CtaSection site={site} />
+  <Footer site={site} />
+</BaseLayout>
