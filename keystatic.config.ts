@@ -3,7 +3,7 @@ import { config, singleton, fields } from "@keystatic/core";
 const storage =
   process.env.NODE_ENV === "development"
     ? ({ kind: "local" } as const)
-    : ({ kind: "github", repo: "agustinMontoya2/siete-chukis" } as const);
+    : ({ kind: "cloud" } as const);
 
 const sectionSchema = {
   title: fields.text({ label: "Título" }),
@@ -28,6 +28,7 @@ const sectionSchema = {
 export default config({
   ui: { brand: { name: "Los Siete Chukis" } },
   storage,
+  cloud: { project: "TU-TEAM/TU-PROYECTO" },
   singletons: {
     site: singleton({
       label: "Ajustes del sitio",
